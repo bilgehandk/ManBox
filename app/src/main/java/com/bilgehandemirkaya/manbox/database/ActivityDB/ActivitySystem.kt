@@ -9,13 +9,12 @@ import java.util.Date
 
 
 @Entity(tableName = Constants.ACTIVITYTABLE)
-class OperatingSystems(
+class ActivitySystem(
     @PrimaryKey(autoGenerate = true)
     var id:Int = 0,
     @ColumnInfo(name = "ActivityName") var activityName: String,
     @ColumnInfo(name = "date") var dateActivity: Date,
-    @ColumnInfo(name = "date") var clockActivity: String,
-    @ColumnInfo(name = "image_resource_id") var imageResourceId: Int)
+    @ColumnInfo(name = "date") var clockActivity: String)
 {
     override fun toString(): String {
         return "Customer{" +
