@@ -6,11 +6,12 @@ import com.bilgehandemirkaya.manbox.util.Constants
 
 @Entity(tableName = Constants.LOGINTABLE)
 data class Login(
-    @PrimaryKey(autoGenerate = true) val id: Int,
-    val userId: Int,
-    val activityId: Int,
-    val day: String,
-    val time: String,
-    val name: String,
-    val surname: String
+    @PrimaryKey(autoGenerate = true)
+    var username_mail: String,
+    var user_id: Int, //1==manager, 2==user
+    var password: String,
+    var name_surname: String,
+    var height: Int,
+    var weight: Int,
+    var age: Int,
 )

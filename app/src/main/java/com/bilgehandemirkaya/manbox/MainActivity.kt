@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, MenuScreen::class.java)
             startActivity(intent)
         }
+
         
     }
 }
