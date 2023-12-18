@@ -16,6 +16,9 @@ class LoginRepository(private val loginDao: LoginDao) {
     fun updateLogin(login: Login) {
         loginDao.updateLogin(login)
     }
+    suspend fun getLoginById(id: Int): Login {
+        return loginDao.getLoginById(id)
+    }
 
     fun deleteLogin(login: Login) {
         loginDao.deleteLogin(login)
@@ -27,10 +30,6 @@ class LoginRepository(private val loginDao: LoginDao) {
 
     fun getAllLogins(): LiveData<List<Login>> {
         return loginDao.getAllLogins()
-    }
-
-    fun getLoginById(id: Int): Login {
-        return loginDao.getLoginById(id)
     }
 
     fun getLoginsByUserId(userId: Int): LiveData<List<Login>> {

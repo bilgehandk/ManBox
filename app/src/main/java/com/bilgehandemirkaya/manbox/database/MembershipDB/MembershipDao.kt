@@ -24,13 +24,13 @@ interface MembershipDao {
     @Query("DELETE FROM ${Constants.MEMBERSHIPTABLE}")
     fun deleteAllMemberships()
 
-    @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} ORDER BY id ASC")
+    @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} ORDER BY id_class ASC")
     fun getAllMemberships(): LiveData<List<Membership>>
 
-    @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} WHERE id = :id")
-    fun getMembershipById(id: Int): Membership
+    @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} WHERE id_class = :id_class")
+    fun getMembershipById(id_class: Int): Membership
 
-    @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} WHERE username LIKE :searchKey OR name LIKE :searchKey OR surname LIKE :searchKey")
+    @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} WHERE username_mail LIKE :searchKey OR name_surname LIKE :searchKey")
     fun getMembershipsBySearchKey(searchKey: String): LiveData<List<Membership>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

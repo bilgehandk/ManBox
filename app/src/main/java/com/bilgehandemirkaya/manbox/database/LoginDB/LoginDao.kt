@@ -23,15 +23,16 @@ interface LoginDao {
     @Query("DELETE FROM ${Constants.LOGINTABLE}")
     fun deleteAllLogins()
 
-    @Query("SELECT * FROM ${Constants.LOGINTABLE} ORDER BY id ASC")
+    @Query("SELECT * FROM ${Constants.LOGINTABLE} ORDER BY username_mail ASC") // Sıralama alanını değiştirdik
     fun getAllLogins(): LiveData<List<Login>>
 
-    @Query("SELECT * FROM ${Constants.LOGINTABLE} WHERE id = :id")
-    fun getLoginById(id: Int): Login
+    @Query("SELECT * FROM ${Constants.LOGINTABLE} WHERE username_mail = :username_mail")
+    fun getLoginByUsername(username_mail: String): Login
 
-    @Query("SELECT * FROM ${Constants.LOGINTABLE} WHERE userId = :userId")
-    fun getLoginsByUserId(userId: Int): LiveData<List<Login>>
+    @Query("SELECT * FROM ${Constants.LOGINTABLE} WHERE user_id = :user_id")
+    fun getLoginsByUserId(user_id: Int): LiveData<List<Login>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllLogins(logins: List<Login>)
+    abstract fun getLoginById(id: Int): Login
 }
