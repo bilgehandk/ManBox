@@ -21,16 +21,16 @@ interface MembershipDao {
     @Delete
     fun deleteMembership(membership: Membership)
 
-    @Query("DELETE FROM ${SyncStateContract.Constants.MEMBERSHIPTABLE}")
+    @Query("DELETE FROM ${Constants.MEMBERSHIPTABLE}")
     fun deleteAllMemberships()
 
     @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} ORDER BY id ASC")
     fun getAllMemberships(): LiveData<List<Membership>>
 
-    @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE WHERE id = :id")
+    @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} WHERE id = :id")
     fun getMembershipById(id: Int): Membership
 
-    @Query("SELECT * FROM ${Constants.MEMBERSHIP_TABLE_NAME} WHERE username LIKE :searchKey OR name LIKE :searchKey OR surname LIKE :searchKey")
+    @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} WHERE username LIKE :searchKey OR name LIKE :searchKey OR surname LIKE :searchKey")
     fun getMembershipsBySearchKey(searchKey: String): LiveData<List<Membership>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
