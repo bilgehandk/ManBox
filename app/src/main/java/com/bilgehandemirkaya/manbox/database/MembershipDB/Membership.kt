@@ -9,7 +9,7 @@ import com.bilgehandemirkaya.manbox.util.Constants
 
 @Entity(tableName = Constants.MEMBERSHIPTABLE)
 data class Membership(
-<<<<<<< Updated upstream
+
     @PrimaryKey(autoGenerate = true)
     var id_class: Int,
     var username_mail: String,
@@ -18,16 +18,7 @@ data class Membership(
     var hour: String,
     var name_surname: String,
     var teacher_name: String,
+
+
 )
-=======
-    @PrimaryKey(autoGenerate = true) val id: Int,
-    
-    val username: String,
-    val password: String,
-    val name: String,
-    val surname: String,
-    val age: Int,
-    val weight: Double,
-    val height: Double
-)
->>>>>>> Stashed changes
+
