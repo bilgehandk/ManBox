@@ -7,42 +7,36 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import kotlinx.coroutines.flow.Flow
+import com.bilgehandemirkaya.manbox.util.Constants
+
 
 
 @Dao
-interface OperatingSystemDAO {
+interface ActivitySystemDAO {
     // The conflict strategy defines what happens,if there is an existing entry.
     // The default action is ABORT.
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertOperatingSystem(operatingSystems: OperatingSystems)
+    fun insertActivitySystem(activitySystems: ActivitySystem)
 
     @Update
-    fun updateOperatingSystem(operatingSystems: OperatingSystems)
+    fun updateActivitySystem(activitySystems: ActivitySystem)
 
     @Delete
-    fun deleteOperatingSystem(operatingSystems: OperatingSystems)
+    fun deleteActivitySystem(activitySystems: ActivitySystem)
 
-    @Query("DELETE FROM ${Constants.TABLENAME}")
-    fun deleteAllOperatingSystems()
+    @Query("DELETE FROM ${Constants.ACTIVITYTABLE}")
+    fun deleteAllActivitySystems()
 
-    @Query("SELECT * FROM ${Constants.TABLENAME} ORDER BY id DESC")
-    fun getAllOperatingSystems():LiveData<List<OperatingSystems>>
+    @Query("SELECT * FROM ${Constants.ACTIVITYTABLE} ORDER BY id DESC")
+    fun getAllActivitySystems():LiveData<List<ActivitySystem>>
 
-    @Query("SELECT * FROM ${Constants.TABLENAME} WHERE id =:id")
-    fun getOperatingSystemById(id:Int):OperatingSystems
-
-    @Query("SELECT * FROM ${Constants.TABLENAME} WHERE productName LIKE :name")
-    fun getOperatingSystemByName(name:String):MutableList<OperatingSystems>
-
-    @Query("SELECT * FROM ${Constants.TABLENAME} WHERE productName LIKE :searchKey OR date LIKE :searchKey")
-    fun getOperatingSystemsBySearchKey(searchKey:String): Flow<List<OperatingSystems>>
-
+    @Query("SELECT * FROM ${Constants.ACTIVITYTABLE} WHERE id =:id")
+    fun getActivitySystemById(id:Int):ActivitySystem
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllOperatingSystems(operatingSystems: ArrayList<OperatingSystems>){
+    fun insertAllOperatingSystems(operatingSystems: ArrayList<ActivitySystem>){
         operatingSystems.forEach{
-            insertOperatingSystem(it)
+            insertActivitySystem(it)
         }
     }
 

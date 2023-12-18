@@ -7,16 +7,16 @@ import androidx.room.RoomDatabase
 
 //If you change anything on the database like adding a field to table, chnaging type of a filed, deleting a filed, changing the name of the field
 @Database(entities = [ActivitySystem::class], version = 5)
-abstract class OperatingSystemsRoomDatabase : RoomDatabase() {
-    abstract fun operatingSystemDao(): OperatingSystemDAO
+abstract class ActivitySystemRoomDatabase : RoomDatabase() {
+    abstract fun ActivitySystemDAO(): ActivitySystemDAO
 
     companion object {
-        private const val DATABASE_NAME = "operating_systems_database"
+        private const val DATABASE_NAME = "activity_systems_database"
 
         @Volatile
-        private var INSTANCE: OperatingSystemsRoomDatabase? = null
+        private var INSTANCE: ActivitySystemRoomDatabase? = null
 
-        fun getDatabase(context: Context): OperatingSystemsRoomDatabase {
+        fun getDatabase(context: Context): ActivitySystemRoomDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
@@ -24,7 +24,7 @@ abstract class OperatingSystemsRoomDatabase : RoomDatabase() {
             synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    OperatingSystemsRoomDatabase::class.java,
+                    ActivitySystemRoomDatabase::class.java,
                     DATABASE_NAME
                 )
                     .build()
