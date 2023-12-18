@@ -9,11 +9,9 @@ import androidx.room.Query
 import androidx.room.Update
 import com.bilgehandemirkaya.manbox.util.Constants
 
-
-
 @Dao
 interface ActivitySystemDAO {
-    // The conflict strategy defines what happens,if there is an existing entry.
+    // The conflict strategy defines what happens if there is an existing entry.
     // The default action is ABORT.
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertActivitySystem(activitySystems: ActivitySystem)
@@ -28,16 +26,15 @@ interface ActivitySystemDAO {
     fun deleteAllActivitySystems()
 
     @Query("SELECT * FROM ${Constants.ACTIVITYTABLE} ORDER BY id DESC")
-    fun getAllActivitySystems():LiveData<List<ActivitySystem>>
+    fun getAllActivitySystems(): LiveData<List<ActivitySystem>>
 
-    @Query("SELECT * FROM ${Constants.ACTIVITYTABLE} WHERE id =:id")
-    fun getActivitySystemById(id:Int):ActivitySystem
+    @Query("SELECT * FROM ${Constants.ACTIVITYTABLE} WHERE id = :id")
+    fun getActivitySystemById(id: Int): LiveData<ActivitySystem>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllOperatingSystems(operatingSystems: ArrayList<ActivitySystem>){
-        operatingSystems.forEach{
-            insertActivitySystem(it)
-        }
-    }
+    fun insertAllOperatingSystems(operatingSystems: List<ActivitySystem>)
 
+    // You can also use vararg to accept a variable number of arguments
+    // @Insert(onConflict = OnConflictStrategy.REPLACE)
+    // fun insertAllOperatingSystems(vararg operatingSystems: ActivitySystem)
 }

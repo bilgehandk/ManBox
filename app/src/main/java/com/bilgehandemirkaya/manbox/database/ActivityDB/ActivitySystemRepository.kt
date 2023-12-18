@@ -33,8 +33,6 @@ class ActivitySystemRepository(private val activitySystemDAO: ActivitySystemDAO)
         return activitySystemDAO.getAllActivitySystems()
     }
 
-    fun getActivitySystemsById(id:Int):ActivitySystem{
-        return activitySystemDAO.getActivitySystemById(id)
-    }
+
 
 }
