@@ -74,7 +74,7 @@
             android:text="Önceki" />
 
         <EditText
-            android:id="@+id/editTextDate"
+            android:id="@+id/dateEditBox"
             android:layout_width="160dp"
             android:layout_height="68dp"
             android:layout_margin="3dp"
