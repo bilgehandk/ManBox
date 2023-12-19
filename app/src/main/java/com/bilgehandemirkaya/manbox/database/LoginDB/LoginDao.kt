@@ -34,5 +34,9 @@ interface LoginDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllLogins(logins: List<Login>)
-    abstract fun getLoginById(id: Int): Login
+
+    @Query("SELECT * FROM ${Constants.LOGINTABLE} WHERE username_mail = :username AND password = :password")
+    fun getLoginByUsernameAndPassword(username: String, password: String): LiveData<Login?>
+
+
 }

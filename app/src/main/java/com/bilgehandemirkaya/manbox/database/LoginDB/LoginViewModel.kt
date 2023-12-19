@@ -3,6 +3,7 @@ package com.bilgehandemirkaya.manbox.database.LoginDB
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.bilgehandemirkaya.manbox.database.ActivityDB.ActivitySystemRoomDatabase
 import kotlinx.coroutines.Dispatchers
@@ -48,11 +49,25 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    suspend fun getLoginById(id: Int): Login {
-        return repository.getLoginById(id)
+    fun loginUser(username: String, password: String): LiveData<Login?> {
+        return repository.loginUser(username, password)
     }
+
 
     fun getLoginsByUserId(userId: Int): LiveData<List<Login>> {
         return repository.getLoginsByUserId(userId)
+    }
+
+    fun performLogin() {
+        val newLogin = Login(
+            username_mail = "bilgehan@gmail.com",
+            user_id = 2,
+            password = "123456",
+            name_surname = "Bilgehan Demirkaya",
+            height = 175,
+            weight = 70,
+            age = 25
+        )
+        insertLogin(newLogin)
     }
 }

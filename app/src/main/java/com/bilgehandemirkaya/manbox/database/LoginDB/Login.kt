@@ -6,7 +6,7 @@ import com.bilgehandemirkaya.manbox.util.Constants
 
 @Entity(tableName = Constants.LOGINTABLE)
 data class Login(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     var username_mail: String,
     var user_id: Int, // 1==manager, 2==user
     var password: String,

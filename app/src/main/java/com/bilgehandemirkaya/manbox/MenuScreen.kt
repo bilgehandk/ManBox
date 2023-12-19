@@ -11,7 +11,8 @@ class MenuScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_menu_screen)
+        binding = ActivityMenuScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         binding.button12.setOnClickListener{
             val intent = Intent(this, MenuScreen::class.java)

@@ -13,9 +13,7 @@ class ActivitySystemRepository(private val activitySystemDAO: ActivitySystemDAO)
     fun insertActivitySystem(activitySystem: ActivitySystem){
         activitySystemDAO.insertActivitySystem(activitySystem)
     }
-    fun insertActivitySystems(activitySystems:ArrayList<ActivitySystem>){
-        activitySystemDAO.insertAllOperatingSystems(activitySystems)
-    }
+
 
     fun updateActivitySystem(activitySystem: ActivitySystem){
         activitySystemDAO.updateActivitySystem(activitySystem)
