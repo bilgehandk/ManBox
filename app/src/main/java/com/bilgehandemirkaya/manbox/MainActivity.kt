@@ -4,6 +4,7 @@ package com.bilgehandemirkaya.manbox
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bilgehandemirkaya.manbox.MenuScreen
@@ -20,34 +21,35 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        // Assuming you have ViewModelProvider in your application
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
-
-
-
-        // Insert the newLogin into the database using the ViewModel
         loginViewModel.performLogin()
 
         binding.button.setOnClickListener {
             val mailText = binding.mailEnterance.text.toString()
             val password = binding.passwordEnterance.text.toString()
 
-            // Call the loginUser function from LoginViewModel
-            loginViewModel.loginUser(mailText, password).observe(this, Observer { loggedInUser ->
-                // Check if loggedInUser is not null, indicating successful login
-                if (loggedInUser != null) {
-                    // Open the MenuScreen activity
-                    val intent = Intent(this@MainActivity, MenuScreen::class.java)
-                    startActivity(intent)
-                } else {
-                    // Handle unsuccessful login (e.g., show an error message)
-                    // You can customize this part based on your app's requirements
-                    // For example, you can display a toast or set an error message on the UI
-                    // indicating that the login credentials are incorrect.
-                }
-            })
+            if (mailText.isNotEmpty() && password.isNotEmpty()) {
+                // Call the loginUser function from LoginViewModel
+                loginViewModel.loginUser(mailText, password).observe(this, Observer { loggedInUser ->
+                    if (loggedInUser != null) {
+                        // Open the MenuScreen activity
+                        val intent = Intent(this@MainActivity, MenuScreen::class.java)
+                        startActivity(intent)
+                    } else {
+                        // Handle unsuccessful login
+                        Toast.makeText(this@MainActivity, "Invalid credentials", Toast.LENGTH_SHORT).show()
+                    }
+                })
+            } else {
+                Toast.makeText(this@MainActivity, "Please enter email and password", Toast.LENGTH_SHORT).show()
+            }
         }
+
+        binding.button3.setOnClickListener{
+            val intent = Intent(this@MainActivity, Register::class.java)
+            startActivity(intent)
+        }
+
     }
 }
