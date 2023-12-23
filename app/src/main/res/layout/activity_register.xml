@@ -47,7 +47,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:ems="10"
-        android:hint="İsim Soyisim"
+        android:hint="Name Surname"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/editHeight"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +63,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:ems="10"
-        android:hint="Doğum Yılı"
+        android:hint="Age"
         android:inputType="date"
         app:layout_constraintBottom_toTopOf="@+id/editWeight"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +79,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="228dp"
         android:ems="10"
-        android:hint="Kilo"
+        android:hint="Weight"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,7 +96,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:ems="10"
-        android:hint="Boy"
+        android:hint="Height"
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/EditBirthDate"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,10 +111,11 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="45dp"
         android:layout_marginBottom="80dp"
-        android:text="Kayıt Ol"
+        android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editWeight" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
