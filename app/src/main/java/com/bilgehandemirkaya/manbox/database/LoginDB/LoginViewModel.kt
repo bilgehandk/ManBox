@@ -58,6 +58,12 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         return repository.getLoginsByUserId(userId)
     }
 
+
+    fun getCurrentUser(): LiveData<List<Login>> {
+        return readAllData
+    }
+
+
     fun performLogin() {
         val newLogin = Login(
             username_mail = "bilgehan@gmail.com",
@@ -70,4 +76,5 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         )
         insertLogin(newLogin)
     }
+
 }
