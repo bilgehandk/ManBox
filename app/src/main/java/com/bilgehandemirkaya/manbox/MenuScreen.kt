@@ -8,15 +8,13 @@ import com.bilgehandemirkaya.manbox.databinding.ActivityMenuScreenBinding
 
 class MenuScreen : AppCompatActivity() {
     private lateinit var binding: ActivityMenuScreenBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMenuScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.button12.setOnClickListener{
-            val intent = Intent(this, MenuScreen::class.java)
-            startActivity(intent)
-        }
     }
+
 }
+

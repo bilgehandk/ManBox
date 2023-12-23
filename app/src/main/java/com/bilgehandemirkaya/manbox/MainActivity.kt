@@ -1,20 +1,23 @@
 package com.bilgehandemirkaya.manbox
 
-
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.bilgehandemirkaya.manbox.MenuScreen
-import com.bilgehandemirkaya.manbox.database.LoginDB.Login
 import com.bilgehandemirkaya.manbox.databinding.ActivityMainBinding
 import com.bilgehandemirkaya.manbox.database.LoginDB.LoginViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var loginViewModel: LoginViewModel
+    private var mediaPlayer: MediaPlayer? = null
+    private var isPlaying: Boolean = false
+    private var doubleClick = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,5 +54,52 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        mediaPlayer = MediaPlayer.create(this, R.raw.sound1)
+
+        binding.root.setOnClickListener {
+            if (doubleClick) {
+                stopMusic()
+            } else {
+                doubleClick = true
+                Handler(Looper.getMainLooper()).postDelayed({
+                    doubleClick = false
+                }, 500)
+                toggleMusic()
+            }
+        }
     }
+
+    private fun toggleMusic() {
+        if (isPlaying) {
+            pauseMusic()
+        } else {
+            startMusic()
+        }
+    }
+
+    private fun startMusic() {
+        mediaPlayer?.start()
+        isPlaying = true
+        Toast.makeText(this@MainActivity, "Music started", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun pauseMusic() {
+        mediaPlayer?.pause()
+        isPlaying = false
+        Toast.makeText(this@MainActivity, "Music paused", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun stopMusic() {
+        mediaPlayer?.reset()
+        mediaPlayer?.prepare()
+        isPlaying = false
+        Toast.makeText(this@MainActivity, "Music stopped", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer?.release()
+        mediaPlayer = null
+    }
+
 }
