@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="3dp"
-            android:text="Profil Bilgilerim"
+            android:text="Profile Information"
             app:icon="@drawable/ic_launcher_foreground"
             app:iconGravity="textEnd"
             app:iconSize="32dp" />
