@@ -13,7 +13,8 @@ data class Login(
     var name_surname: String,
     var height: Int,
     var weight: Int,
-    var age: Int
+    var age: Int,
+    val entrance: Boolean = false
 ) {
     override fun toString(): String {
         return "Login{" +

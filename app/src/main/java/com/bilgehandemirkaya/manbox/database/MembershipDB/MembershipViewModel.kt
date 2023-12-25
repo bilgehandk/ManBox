@@ -41,6 +41,14 @@ class MembershipViewModel(application: Application) : AndroidViewModel(applicati
         }
     }
 
+    fun getLatestMembershipNumber(id_class: Int): Int {
+        return repository.getLatestMembershipNumber(id_class)
+    }
+
+    fun getMembershipByActivityId(id_activity: Int): Membership {
+        return repository.getMembershipByActivityId(id_activity)
+    }
+
     fun deleteAllMemberships() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteAllMemberships()

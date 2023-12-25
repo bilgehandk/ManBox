@@ -21,6 +21,14 @@ class MembershipRepository(private val membershipDao: MembershipDao) {
         membershipDao.deleteMembership(membership)
     }
 
+    fun getLatestMembershipNumber(id_class: Int): Int {
+        return membershipDao.getLatestMembershipNumber(id_class)
+    }
+
+    fun getMembershipByActivityId(id_activity: Int): Membership {
+        return membershipDao.getMembershipByActivityId(id_activity)
+    }
+
     fun deleteAllMemberships() {
         membershipDao.deleteAllMemberships()
     }

@@ -35,4 +35,10 @@ interface MembershipDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllMemberships(memberships: List<Membership>)
+
+    @Query("SELECT sizeClass FROM ${Constants.MEMBERSHIPTABLE} WHERE id_class = :id_class")
+    fun getLatestMembershipNumber(id_class: Int): Int
+
+    @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} WHERE id_activity = :id_activity")
+    fun getMembershipByActivityId(id_activity: Int): Membership
 }

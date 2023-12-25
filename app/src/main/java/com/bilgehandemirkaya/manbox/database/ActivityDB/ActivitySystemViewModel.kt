@@ -48,14 +48,23 @@ class ActivitySystemViewModel(application:Application):AndroidViewModel(applicat
         }
     }
 
+    fun getActivityByDate(date: String): LiveData<List<ActivitySystem>> {
+        return repository.getActivityByDate(date)
+    }
+
     fun performActivity() {
-        val newActivity = ActivitySystem(
-            0,
-            "Class 09:00",
-            "29/12/2023",
-            "09:00",
-            "Bilgehan Demirkaya",
-        )
+        for (hour in 8..20) {
+                val newActivity = ActivitySystem(
+                    0,
+                    "Class $hour: 0",
+                    "29/12/2023",
+                    "$hour: 0",
+                    "Bilgehan Demirkaya",
+                )
+                addActivitySystem(newActivity)
+
+        }
+
     }
 
 }

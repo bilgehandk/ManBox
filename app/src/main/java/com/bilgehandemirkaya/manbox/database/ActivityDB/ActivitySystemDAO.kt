@@ -31,4 +31,8 @@ interface ActivitySystemDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllActivitySystems(activitySystems: List<ActivitySystem>)
+
+    @Query("SELECT * FROM ${Constants.ACTIVITYTABLE} WHERE date = :date")
+    fun getActivityByDate(date: String): LiveData<List<ActivitySystem>>
+
 }

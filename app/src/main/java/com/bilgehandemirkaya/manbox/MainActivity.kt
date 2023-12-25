@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
 
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         loginViewModel.performLogin()
-        insertSampleUsers()
 
         binding.button.setOnClickListener {
             val mailText = binding.mailEnterance.text.toString()
@@ -40,6 +39,7 @@ class MainActivity : AppCompatActivity() {
                         // Open the MenuScreen activity
                         val intent = Intent(this@MainActivity, MenuScreen::class.java)
                         intent.putExtra("NameSurname", loggedInUser?.name_surname)
+                        loginViewModel.changeEntranceStatus(loggedInUser.name_surname, true)
                         startActivity(intent)
                     } else {
                         // Handle unsuccessful login
@@ -103,41 +103,6 @@ class MainActivity : AppCompatActivity() {
         mediaPlayer = null
     }
 
-    private fun insertSampleUsers() {
-        val arman = Login(
-            username_mail = "arman@gmail.com",
-            user_id = 1,
-            password = "arman123",
-            name_surname = "Arman Yılmazkurt",
-            height = 180,
-            weight = 75,
-            age = 20
-        )
 
-        val emirhan = Login(
-            username_mail = "emirhan@gmail.com",
-            user_id = 2,
-            password = "emirhan123",
-            name_surname = "Emirhan Kaya",
-            height = 185,
-            weight = 70,
-            age = 28
-        )
-
-        val simay = Login(
-            username_mail = "simay@gmail.com",
-            user_id = 3,
-            password = "simay123",
-            name_surname = "Simay Ardıç",
-            height = 165,
-            weight = 55,
-            age = 25
-        )
-
-        // Insert users into the database
-        loginViewModel.insertLogin(arman)
-        loginViewModel.insertLogin(emirhan)
-        loginViewModel.insertLogin(simay)
-    }
 
 }

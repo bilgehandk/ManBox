@@ -38,4 +38,14 @@ class LoginRepository(private val loginDao: LoginDao) {
     fun getLoginsByUserId(userId: Int): LiveData<List<Login>> {
         return loginDao.getLoginsByUserId(userId)
     }
+
+    fun getLastLogin(): Login {
+        return loginDao.getLastUser()
+    }
+
+
+    fun changeEntranceStatus(username: String, entrance: Boolean) {
+        loginDao.changeEntranceStatus(username, entrance)
+
+    }
 }
