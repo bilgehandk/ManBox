@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.bilgehandemirkaya.manbox.database.LoginDB.Login
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -45,6 +46,16 @@ class ActivitySystemViewModel(application:Application):AndroidViewModel(applicat
         viewModelScope.launch(Dispatchers.IO){ // that code will be run in background thread, coroutine scope
             repository.updateActivitySystem(activitySystem)
         }
+    }
+
+    fun performActivity() {
+        val newActivity = ActivitySystem(
+            0,
+            "Class 09:00",
+            "29/12/2023",
+            "09:00",
+            "Bilgehan Demirkaya",
+        )
     }
 
 }

@@ -11,10 +11,8 @@ import com.bilgehandemirkaya.manbox.util.Constants
 data class Membership(
     @PrimaryKey(autoGenerate = true)
     var id_class: Int,
-    var username_mail: String,
     var id_activity: Int,
-    var day: String,
-    var hour: String,
+    var username_mail: String,
     var name_surname: String,
-    var teacher_name: String,
+    var sizeClass: Int
 )

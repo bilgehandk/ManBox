@@ -34,6 +34,7 @@ class LoginRepository(private val loginDao: LoginDao) {
         return loginDao.getLoginByUsernameAndPassword(username, password)
     }
 
+
     fun getLoginsByUserId(userId: Int): LiveData<List<Login>> {
         return loginDao.getLoginsByUserId(userId)
     }

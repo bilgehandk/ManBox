@@ -57,7 +57,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         mediaPlayer = MediaPlayer.create(this, R.raw.sound1)
-
         binding.root.setOnClickListener {
             if (doubleClick) {
                 stopMusic()

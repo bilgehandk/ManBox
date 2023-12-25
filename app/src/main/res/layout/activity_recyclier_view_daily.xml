@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rowActivity"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textAlignment="center"
+    tools:context=".recyclier_ViewDailyActivity">
+
+    <TextView
+        android:id="@+id/timeClassActivityText"
+        android:layout_width="50dp"
+        android:layout_height="75dp"
+        android:layout_weight="1"
+        android:text="Class: 12:00"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/numberClassActivityText"
+        android:layout_width="50dp"
+        android:layout_height="75dp"
+        android:layout_weight="1"
+        android:text="0/5"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="50dp"
+        android:layout_height="75dp"
+        android:layout_weight="1"
+        android:text="Bilgehan Demirkaya"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/AddMembershipBtn"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:layout_weight="1"
+        android:text="Reservation"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+</LinearLayout>
