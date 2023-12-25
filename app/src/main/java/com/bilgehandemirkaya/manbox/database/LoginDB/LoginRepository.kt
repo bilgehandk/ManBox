@@ -40,7 +40,7 @@ class LoginRepository(private val loginDao: LoginDao) {
     }
 
     fun getLastLogin(): Login {
-        return loginDao.getLastUser()
+        return loginDao.getEntranceUser()
     }
 
 

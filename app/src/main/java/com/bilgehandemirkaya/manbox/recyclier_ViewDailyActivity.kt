@@ -5,13 +5,12 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bilgehandemirkaya.manbox.database.ActivityDB.ActivitySystem
-import com.bilgehandemirkaya.manbox.database.ActivityDB.ActivitySystemViewModel
-import com.bilgehandemirkaya.manbox.database.LoginDB.Login
 import com.bilgehandemirkaya.manbox.database.LoginDB.LoginViewModel
 import com.bilgehandemirkaya.manbox.database.MembershipDB.Membership
 import com.bilgehandemirkaya.manbox.database.MembershipDB.MembershipViewModel
@@ -20,9 +19,6 @@ class RecyclerViewAdapter(private val context: Context) :
     RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewItemHolder>() {
 
     private var recyclerItemValues = emptyList<ActivitySystem>()
-    private lateinit var activitySystem: ActivitySystem
-
-
 
     fun setData(items: List<ActivitySystem>) {
         recyclerItemValues = items
@@ -45,7 +41,7 @@ class RecyclerViewAdapter(private val context: Context) :
         holder.trainerNameTextView.text = item.trainerName
 
         // Move click handling logic here
-        holder.itemView.setOnClickListener {
+        holder.addMembershipBtn.setOnClickListener {
             val intent = Intent(context, TraningActivity::class.java)
             // Assuming you want to pass some information to the TraningActivity
             intent.putExtra("activity_id", item.id_activity)
@@ -54,13 +50,8 @@ class RecyclerViewAdapter(private val context: Context) :
             val loginViewModel = ViewModelProvider(context as TraningActivity).get(LoginViewModel::class.java)
             val membershipViewModel = ViewModelProvider(context as TraningActivity).get(MembershipViewModel::class.java)
 
-
-
             val getLastLogin = loginViewModel.getLastUser()
-
             val membershipModel = membershipViewModel.getMembershipByActivityId(id)
-
-
             val membershipNumber = membershipViewModel.getLatestMembershipNumber(membershipModel.id_class) + 1
 
             val membership = Membership(
@@ -72,17 +63,8 @@ class RecyclerViewAdapter(private val context: Context) :
             )
             membershipViewModel.insertMembership(membership)
             Toast.makeText(context, "Membership is added", Toast.LENGTH_SHORT).show()
-
-
         }
-
-
-
-
     }
-
-
-
 
     override fun getItemCount(): Int {
         return recyclerItemValues.size
@@ -92,5 +74,6 @@ class RecyclerViewAdapter(private val context: Context) :
         val timeClassActivityText: TextView = itemView.findViewById(R.id.timeClassActivityText)
         val numberClassActivityText: TextView = itemView.findViewById(R.id.numberClassActivityText)
         val trainerNameTextView: TextView = itemView.findViewById(R.id.TrainerNameTextView)
+        val addMembershipBtn: Button = itemView.findViewById(R.id.addMembershipBtn)
     }
 }

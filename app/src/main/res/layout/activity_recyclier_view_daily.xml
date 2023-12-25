@@ -36,7 +36,7 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/AddMembershipBtn"
+        android:id="@+id/addMembershipBtn"
         android:layout_width="100dp"
         android:layout_height="75dp"
         android:layout_weight="1"

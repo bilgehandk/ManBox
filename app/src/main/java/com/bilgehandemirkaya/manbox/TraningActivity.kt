@@ -1,8 +1,8 @@
 package com.bilgehandemirkaya.manbox
+
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +16,7 @@ class TraningActivity : AppCompatActivity(), DatePickerFragment.DatePickerListen
     private lateinit var binding: ActivityTraningBinding
     private lateinit var activitySystemViewModel: ActivitySystemViewModel
     private lateinit var adapter: RecyclerViewAdapter
-    private lateinit var membershipSystemViewModel: ActivitySystemViewModel
+    private lateinit var membershipViewModel: MembershipViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,12 +26,11 @@ class TraningActivity : AppCompatActivity(), DatePickerFragment.DatePickerListen
         activitySystemViewModel = ViewModelProvider(this).get(ActivitySystemViewModel::class.java)
         activitySystemViewModel.performActivity()
 
+        membershipViewModel = ViewModelProvider(this).get(MembershipViewModel::class.java)
+
         adapter = RecyclerViewAdapter(this)
         binding.recyclerCustomerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerCustomerView.adapter = adapter
-
-
-
 
         binding.dateEditBox.setOnClickListener {
             // Open DatePicker and handle the selected date
@@ -39,8 +38,6 @@ class TraningActivity : AppCompatActivity(), DatePickerFragment.DatePickerListen
         }
 
         getDataTime()
-
-
     }
 
     private fun showDatePicker() {
@@ -60,7 +57,6 @@ class TraningActivity : AppCompatActivity(), DatePickerFragment.DatePickerListen
             activitySystemViewModel.getActivityByDate(selectedDate).observe(this, Observer { activitySystem ->
                 adapter.setData(activitySystem)
             })
-
         }
     }
 }

@@ -40,7 +40,7 @@ interface LoginDao {
 
     // entrance true olan kullanıcıyı getirir
     @Query("SELECT * FROM ${Constants.LOGINTABLE} WHERE entrance = 1")
-    fun getLastUser(): Login
+    fun getEntranceUser(): Login
 
     // entrance durumunu değiştirir
     @Query("UPDATE ${Constants.LOGINTABLE} SET entrance = :entrance WHERE username_mail = :username")
