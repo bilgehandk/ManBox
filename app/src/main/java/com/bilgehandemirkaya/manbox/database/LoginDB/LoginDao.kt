@@ -40,11 +40,11 @@ interface LoginDao {
 
     // entrance true olan kullanıcıyı getirir
     @Query("SELECT * FROM ${Constants.LOGINTABLE} WHERE entrance = 1")
-    fun getEntranceUser(): Login
+    fun getLastUser(): LiveData<Login?>
 
     // entrance durumunu değiştirir
     @Query("UPDATE ${Constants.LOGINTABLE} SET entrance = :entrance WHERE username_mail = :username")
-    fun changeEntranceStatus(username: String, entrance: Boolean)
+    suspend fun changeEntranceStatus(username: String, entrance: Boolean): Int
 
 
 
