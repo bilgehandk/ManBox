@@ -1,11 +1,9 @@
 package com.bilgehandemirkaya.manbox.database.LoginDB
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
-import com.bilgehandemirkaya.manbox.database.ActivityDB.ActivitySystemRoomDatabase
+import androidx.lifecycle.*
+import com.bilgehandemirkaya.manbox.database.MembershipDB.Membership
+import com.bilgehandemirkaya.manbox.database.MembershipDB.MembershipViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -13,6 +11,9 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     val readAllData: LiveData<List<Login>>
 
     private val repository: LoginRepository
+
+    private val _lastUser = MutableLiveData<Login?>()
+    val lastUser: LiveData<Login?> get() = _lastUser
 
     init {
         val loginDao = LoginDatabase.getDatabase(application).loginDao()
@@ -23,7 +24,6 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     fun insertLogin(login: Login) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertLogin(login)
-
         }
     }
 
@@ -55,26 +55,33 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         return repository.loginUser(username, password)
     }
 
-
     fun getLoginsByUserId(userId: Int): LiveData<List<Login>> {
         return repository.getLoginsByUserId(userId)
     }
 
-    fun changeEntranceStatus(username: String, entrance: Boolean) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.changeEntranceStatus(username, entrance)
-        }
-    }
+    fun changeEntranceStatus(username: String, entrance: Boolean): LiveData<Boolean> {
+        val result = MutableLiveData<Boolean>()
 
+        viewModelScope.launch {
+            try {
+                result.value = repository.changeEntranceStatus(username, entrance)
+            } catch (e: Exception) {
+                // Log the error or handle it appropriately
+                result.value = false
+            }
+        }
+
+        return result
+    }
 
     fun getCurrentUser(): LiveData<List<Login>> {
         return readAllData
     }
 
-    fun getLastUser(): Login {
-        return repository.getLastLogin()
+    fun _getLastUser(): LiveData<Login?> {
+        // Which entrance true it is last user
+        return repository.getLastUser()
     }
-
 
     fun performLogin() {
         val newLogin = Login(
@@ -122,5 +129,4 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         insertLogin(simay)
         insertLogin(newLogin)
     }
-
 }

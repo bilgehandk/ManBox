@@ -1,13 +1,12 @@
 package com.bilgehandemirkaya.manbox
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bilgehandemirkaya.manbox.database.ActivityDB.ActivitySystemViewModel
-import com.bilgehandemirkaya.manbox.database.MembershipDB.Membership
+import com.bilgehandemirkaya.manbox.database.LoginDB.LoginViewModel
 import com.bilgehandemirkaya.manbox.database.MembershipDB.MembershipViewModel
 import com.bilgehandemirkaya.manbox.databinding.ActivityTraningBinding
 
@@ -15,8 +14,9 @@ class TraningActivity : AppCompatActivity(), DatePickerFragment.DatePickerListen
 
     private lateinit var binding: ActivityTraningBinding
     private lateinit var activitySystemViewModel: ActivitySystemViewModel
-    private lateinit var adapter: RecyclerViewAdapter
+    private lateinit var loginViewModel: LoginViewModel
     private lateinit var membershipViewModel: MembershipViewModel
+    private lateinit var adapter: RecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,20 +24,29 @@ class TraningActivity : AppCompatActivity(), DatePickerFragment.DatePickerListen
         setContentView(binding.root)
 
         activitySystemViewModel = ViewModelProvider(this).get(ActivitySystemViewModel::class.java)
-        activitySystemViewModel.performActivity()
-
+        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         membershipViewModel = ViewModelProvider(this).get(MembershipViewModel::class.java)
 
-        adapter = RecyclerViewAdapter(this)
-        binding.recyclerCustomerView.layoutManager = LinearLayoutManager(this)
+        // RecyclerViewAdapter'ı geç başlatma
+        adapter = RecyclerViewAdapter(this, null, membershipViewModel)
         binding.recyclerCustomerView.adapter = adapter
+        binding.recyclerCustomerView.layoutManager = LinearLayoutManager(this)
+
+        activitySystemViewModel.performActivity()
+
+        loginViewModel.lastUser.observe(this, Observer { lastUser ->
+            if (lastUser != null) {
+
+
+                // getDataTime'i buraya taşı
+                getDataTime()
+            }
+        })
 
         binding.dateEditBox.setOnClickListener {
             // Open DatePicker and handle the selected date
             showDatePicker()
         }
-
-        getDataTime()
     }
 
     private fun showDatePicker() {
@@ -52,10 +61,13 @@ class TraningActivity : AppCompatActivity(), DatePickerFragment.DatePickerListen
     }
 
     private fun getDataTime(selectedDate: String? = null) {
-        if (selectedDate != null) {
+        // Check if the adapter is initialized before using it
+        if (::adapter.isInitialized && selectedDate != null) {
             // Fetch data based on the selected date
             activitySystemViewModel.getActivityByDate(selectedDate).observe(this, Observer { activitySystem ->
+                // Update adapter data
                 adapter.setData(activitySystem)
+                adapter.notifyDataSetChanged()
             })
         }
     }

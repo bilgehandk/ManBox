@@ -1,14 +1,13 @@
 package com.bilgehandemirkaya.manbox.database.MembershipDB
 
 import android.content.Context
-import android.provider.SyncStateContract
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.bilgehandemirkaya.manbox.util.Constants
 
-@Database(entities = [Membership::class], version = 1, exportSchema = false)
+@Database(entities = [Membership::class], version = 3, exportSchema = false)
 abstract class MembershipDatabase : RoomDatabase() {
+
     abstract fun membershipDao(): MembershipDao
 
     companion object {
@@ -16,19 +15,16 @@ abstract class MembershipDatabase : RoomDatabase() {
         private var INSTANCE: MembershipDatabase? = null
 
         fun getDatabase(context: Context): MembershipDatabase {
-            val tempInstance = INSTANCE
-            if (tempInstance != null) {
-                return tempInstance
-            }
-
-            synchronized(this) {
+            return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     MembershipDatabase::class.java,
-                    Constants.MEMBERSHIPTABLE
-                ).build()
+                    "membership_database"
+                )
+                .fallbackToDestructiveMigration()
+                .build()
                 INSTANCE = instance
-                return instance
+                instance
             }
         }
     }

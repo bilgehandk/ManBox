@@ -33,14 +33,22 @@ class MainActivity : AppCompatActivity() {
             val password = binding.passwordEnterance.text.toString()
 
             if (mailText.isNotEmpty() && password.isNotEmpty()) {
-                // Call the loginUser function from LoginViewModel
                 loginViewModel.loginUser(mailText, password).observe(this, Observer { loggedInUser ->
                     if (loggedInUser != null) {
-                        // Open the MenuScreen activity
-                        val intent = Intent(this@MainActivity, MenuScreen::class.java)
-                        intent.putExtra("NameSurname", loggedInUser?.name_surname)
-                        loginViewModel.changeEntranceStatus(loggedInUser.name_surname, true)
-                        startActivity(intent)
+                        loginViewModel.changeEntranceStatus(loggedInUser.username_mail, true)
+                            .observe(this, Observer { success ->
+                                if (success) {
+                                    // Open the MenuScreen activity
+                                    val intent = Intent(this@MainActivity, MenuScreen::class.java)
+                                    intent.putExtra("userName", loggedInUser?.username_mail)
+                                    startActivity(intent)
+                                } else {
+                                    // Handle unsuccessful entrance status change
+                                    Toast.makeText(this@MainActivity, "Failed to change entrance status", Toast.LENGTH_SHORT).show()
+                                }
+                            })
+
+
                     } else {
                         // Handle unsuccessful login
                         Toast.makeText(this@MainActivity, "Invalid credentials", Toast.LENGTH_SHORT).show()
@@ -50,6 +58,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this@MainActivity, "Please enter email and password", Toast.LENGTH_SHORT).show()
             }
         }
+
 
         binding.button3.setOnClickListener{
             val intent = Intent(this@MainActivity, Register::class.java)

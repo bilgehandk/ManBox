@@ -12,33 +12,29 @@ import com.bilgehandemirkaya.manbox.util.Constants
 
 @Dao
 interface MembershipDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertMembership(membership: Membership)
 
-    @Update
-    fun updateMembership(membership: Membership)
+        @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE}")
+        fun getAllMemberships(): LiveData<List<Membership>>
 
-    @Delete
-    fun deleteMembership(membership: Membership)
+        @Insert(onConflict = OnConflictStrategy.IGNORE)
+        suspend fun insert(membership: Membership)
 
-    @Query("DELETE FROM ${Constants.MEMBERSHIPTABLE}")
-    fun deleteAllMemberships()
+        @Query("DELETE FROM ${Constants.MEMBERSHIPTABLE}")
+        suspend fun deleteAll()
 
-    @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} ORDER BY id_class ASC")
-    fun getAllMemberships(): LiveData<List<Membership>>
 
-    @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} WHERE id_class = :id_class")
-    fun getMembershipById(id_class: Int): Membership
 
-    @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} WHERE username_mail LIKE :searchKey OR name_surname LIKE :searchKey")
-    fun getMembershipsBySearchKey(searchKey: String): LiveData<List<Membership>>
+        @Query("SELECT sizeClass FROM ${Constants.MEMBERSHIPTABLE} WHERE id_class = :id")
+        suspend fun getLatestMembershipNumber(id: Int): Int
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllMemberships(memberships: List<Membership>)
+        @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} WHERE username_mail = :username")
+        suspend fun getMembership(username: String): Membership
 
-    @Query("SELECT sizeClass FROM ${Constants.MEMBERSHIPTABLE} WHERE id_class = :id_class")
-    fun getLatestMembershipNumber(id_class: Int): Int
+        @Query("UPDATE ${Constants.MEMBERSHIPTABLE} SET sizeClass = :size WHERE username_mail = :username")
+        suspend fun updateMembership(username: String, size: Int)
 
-    @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} WHERE id_activity = :id_activity")
-    fun getMembershipByActivityId(id_activity: Int): Membership
+        @Query("DELETE FROM ${Constants.MEMBERSHIPTABLE} WHERE username_mail = :username")
+        suspend fun deleteMembership(username: String)
+
+
 }

@@ -56,9 +56,9 @@ class ActivitySystemViewModel(application:Application):AndroidViewModel(applicat
         for (hour in 8..20) {
                 val newActivity = ActivitySystem(
                     0,
-                    "Class $hour: 0",
+                    "Class $hour: 00",
                     "29/12/2023",
-                    "$hour: 0",
+                    "$hour: 00",
                     "Bilgehan Demirkaya",
                 )
                 addActivitySystem(newActivity)

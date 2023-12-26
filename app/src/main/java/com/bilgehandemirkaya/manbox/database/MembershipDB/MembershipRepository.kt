@@ -3,45 +3,40 @@ package com.bilgehandemirkaya.manbox.database.MembershipDB
 import androidx.lifecycle.LiveData
 
 class MembershipRepository(private val membershipDao: MembershipDao) {
-    val readAllData: LiveData<List<Membership>> = membershipDao.getAllMemberships()
 
-    fun insertMembership(membership: Membership) {
-        membershipDao.insertMembership(membership)
-    }
+        val allMemberships: LiveData<List<Membership>> = membershipDao.getAllMemberships()
 
-    fun insertMemberships(memberships: List<Membership>) {
-        membershipDao.insertAllMemberships(memberships)
-    }
+        suspend fun insert(membership: Membership) {
+            membershipDao.insert(membership)
+        }
 
-    fun updateMembership(membership: Membership) {
-        membershipDao.updateMembership(membership)
-    }
 
-    fun deleteMembership(membership: Membership) {
-        membershipDao.deleteMembership(membership)
-    }
 
-    fun getLatestMembershipNumber(id_class: Int): Int {
-        return membershipDao.getLatestMembershipNumber(id_class)
-    }
+        suspend fun deleteAll() {
+            membershipDao.deleteAll()
+        }
 
-    fun getMembershipByActivityId(id_activity: Int): Membership {
-        return membershipDao.getMembershipByActivityId(id_activity)
-    }
+        suspend fun getLatestMembershipNumber(id: Int): Int {
+            return membershipDao.getLatestMembershipNumber(id)
+        }
 
-    fun deleteAllMemberships() {
-        membershipDao.deleteAllMemberships()
-    }
+        suspend fun getMembership(username: String): Membership {
+            return membershipDao.getMembership(username)
+        }
 
-    fun getAllMemberships(): LiveData<List<Membership>> {
-        return membershipDao.getAllMemberships()
-    }
+        suspend fun updateMembership(username: String, size: Int) {
+            membershipDao.updateMembership(username, size)
+        }
 
-    fun getMembershipById(id: Int): Membership {
-        return membershipDao.getMembershipById(id)
-    }
 
-    fun getMembershipsBySearchKey(searchKey: String): LiveData<List<Membership>> {
-        return membershipDao.getMembershipsBySearchKey(searchKey)
-    }
+        suspend fun insertOrUpdateMembership(membership: Membership) {
+            val membershipFromDB = membershipDao.getMembership(membership.username_mail)
+            if (membershipFromDB == null) {
+                membershipDao.insert(membership)
+            } else {
+                membershipDao.updateMembership(membership.username_mail, membership.sizeClass)
+            }
+        }
+
+
 }
