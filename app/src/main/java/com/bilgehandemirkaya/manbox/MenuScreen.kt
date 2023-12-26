@@ -1,5 +1,6 @@
 package com.bilgehandemirkaya.manbox
 
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -41,6 +42,12 @@ class MenuScreen : AppCompatActivity() {
         binding.button6.setOnClickListener{
             val intent = Intent(this, TraningActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.button4.setOnClickListener {
+            val intent = Intent(this, SalonGiris::class.java)
+            startActivity(intent)
+
         }
     }
 

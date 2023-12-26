@@ -55,6 +55,8 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
 
+
+
     val room_version = "2.6.0"
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
@@ -72,5 +74,7 @@ dependencies {
     api ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5")
     api ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.5")
 
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation ("com.google.zxing:core:3.3.0")
 
 }

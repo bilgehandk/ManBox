@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ManBox"
         tools:targetApi="31">
         <activity
+            android:name=".SalonGiris"
+            android:exported="false" />
+        <activity
             android:name=".DatePicker"
             android:exported="false" />
         <activity
