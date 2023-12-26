@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MenuScreen">
-
     <Button
         android:id="@+id/button9"
         android:layout_width="340dp"
@@ -126,8 +125,8 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="150dp"
-        android:layout_height="25dp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="15dp"
