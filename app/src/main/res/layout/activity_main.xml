@@ -6,46 +6,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <EditText
         android:id="@+id/mailEnterance"
-        android:layout_width="0dp"
+        android:layout_width="375dp"
+
         android:layout_height="60dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginEnd="14dp"
+        android:background="@drawable/white_border"
         android:ems="10"
+        android:gravity="center"
         android:hint="E-Mail or User Name"
+        android:inputType="text"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:background="@drawable/white_border"
-        android:inputType="text"
-        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/passwordEnterance"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.969" />
+
     <EditText
         android:id="@+id/passwordEnterance"
-        android:layout_width="0dp"
+        android:layout_width="375dp"
+
         android:layout_height="60dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="320dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="316dp"
+        android:background="@drawable/white_border"
         android:ems="10"
+        android:gravity="center"
         android:hint="Password"
+        android:inputType="textPassword"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:background="@drawable/white_border"
-        android:inputType="textPassword"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mailEnterance" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button"
+
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:background="@drawable/button_shape"
@@ -53,7 +54,7 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
-        android:layout_width="0dp"
+        android:layout_width="375dp"
         android:layout_height="52dp"
         android:layout_marginStart="14dp"
         android:layout_marginTop="20dp"
@@ -64,30 +65,33 @@
         app:layout_constraintTop_toBottomOf="@+id/passwordEnterance"
         />
 
+
     <Button
         android:id="@+id/button2"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:layout_width="145dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="14dp"
         android:background="@drawable/button_shape"
         android:shadowColor="#A8A8A8"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="14dp"
         android:text="Forgot Password"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
-
     <Button
         android:id="@+id/button3"
-        android:layout_width="130dp"
-        android:layout_height="46dp"
+        android:layout_width="145dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="14dp"
         android:background="@drawable/button_shape"
         android:shadowColor="#A8A8A8"
         android:shadowDx="0"
@@ -95,10 +99,10 @@
         android:shadowRadius="5"
         android:text="REGISTER"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.326" />
+        app:layout_constraintVertical_bias="0.038" />
 </androidx.constraintlayout.widget.ConstraintLayout>
