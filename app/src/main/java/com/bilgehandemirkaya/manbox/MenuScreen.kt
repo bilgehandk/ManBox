@@ -1,5 +1,6 @@
 package com.bilgehandemirkaya.manbox
 
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -24,7 +25,7 @@ class MenuScreen : AppCompatActivity() {
 
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
-        val nameSurname = intent.getStringExtra("NameSurname")
+        val nameSurname = intent.getStringExtra("userName")
         binding.textView3.text = "Hello $nameSurname"
 
 
@@ -40,6 +41,17 @@ class MenuScreen : AppCompatActivity() {
 
         binding.button6.setOnClickListener{
             val intent = Intent(this, TraningActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.button4.setOnClickListener {
+            val intent = Intent(this, SalonGiris::class.java)
+            startActivity(intent)
+
+        }
+
+        binding.button9.setOnClickListener {
+            val intent = Intent(this, WeatherActivity::class.java)
             startActivity(intent)
         }
     }

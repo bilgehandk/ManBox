@@ -3,55 +3,35 @@ package com.bilgehandemirkaya.manbox.database.MembershipDB
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class MembershipViewModel(application: Application) : AndroidViewModel(application) {
-    val readAllData: LiveData<List<Membership>>
+
     private val repository: MembershipRepository
+    val AllData : LiveData<List<Membership>>
 
     init {
         val membershipDao = MembershipDatabase.getDatabase(application).membershipDao()
         repository = MembershipRepository(membershipDao)
-        readAllData = repository.readAllData
+        AllData = repository.allMemberships
     }
 
-    fun insertMembership(membership: Membership) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.insertMembership(membership)
-        }
+    fun insert(membership: Membership) = viewModelScope.launch {
+        repository.insert(membership)
     }
 
-    fun insertMemberships(memberships: List<Membership>) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.insertMemberships(memberships)
-        }
+    fun deleteAll() = viewModelScope.launch {
+        repository.deleteAll()
     }
 
-    fun updateMembership(membership: Membership) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.updateMembership(membership)
-        }
+    fun getLatestMembershipNumber(id: Int) : Int? {
+        return repository.getLatestMembershipNumber(id)
     }
 
-    fun deleteMembership(membership: Membership) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteMembership(membership)
-        }
-    }
-
-    fun deleteAllMemberships() {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteAllMemberships()
-        }
-    }
-
-    fun getMembershipById(id: Int): Membership {
-        return repository.getMembershipById(id)
-    }
-
-    fun getMembershipsBySearchKey(searchKey: String): LiveData<List<Membership>> {
-        return repository.getMembershipsBySearchKey(searchKey)
+    fun insertOrUpdateMembership(membership: Membership) {
+        repository.insertOrUpdateMembership(membership)
     }
 }

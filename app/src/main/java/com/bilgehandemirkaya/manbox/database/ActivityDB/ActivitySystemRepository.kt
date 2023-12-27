@@ -31,6 +31,13 @@ class ActivitySystemRepository(private val activitySystemDAO: ActivitySystemDAO)
         return activitySystemDAO.getAllActivitySystems()
     }
 
+    fun getActivityByDate(date: String): LiveData<List<ActivitySystem>> {
+        return activitySystemDAO.getActivityByDate(date)
+    }
+
+    fun getActivityById(id: Int): ActivitySystem {
+        return activitySystemDAO.getActivityById(id)
+    }
 
 
 }

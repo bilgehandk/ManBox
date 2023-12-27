@@ -9,12 +9,9 @@ import com.bilgehandemirkaya.manbox.util.Constants
 
 @Entity(tableName = Constants.MEMBERSHIPTABLE)
 data class Membership(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     var id_class: Int,
     var username_mail: String,
-    var id_activity: Int,
-    var day: String,
-    var hour: String,
     var name_surname: String,
-    var teacher_name: String,
+    var sizeClass: Int
 )

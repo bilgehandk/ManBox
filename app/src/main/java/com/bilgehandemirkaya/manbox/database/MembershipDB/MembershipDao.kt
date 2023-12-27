@@ -12,27 +12,27 @@ import com.bilgehandemirkaya.manbox.util.Constants
 
 @Dao
 interface MembershipDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertMembership(membership: Membership)
 
-    @Update
-    fun updateMembership(membership: Membership)
+        @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE}")
+        fun getAllMemberships(): LiveData<List<Membership>>
 
-    @Delete
-    fun deleteMembership(membership: Membership)
+        @Insert(onConflict = OnConflictStrategy.REPLACE)
+        fun insert(membership: Membership)
 
-    @Query("DELETE FROM ${Constants.MEMBERSHIPTABLE}")
-    fun deleteAllMemberships()
+        @Query("DELETE FROM ${Constants.MEMBERSHIPTABLE}")
+        fun deleteAll()
 
-    @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} ORDER BY id_class ASC")
-    fun getAllMemberships(): LiveData<List<Membership>>
+        @Query("SELECT sizeClass FROM ${Constants.MEMBERSHIPTABLE} WHERE id_class = :id")
+        fun getLatestMembershipNumber(id: Int): Int?
 
-    @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} WHERE id_class = :id_class")
-    fun getMembershipById(id_class: Int): Membership
+        @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} WHERE username_mail = :username")
+        fun getMembership(username: String): Membership
 
-    @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} WHERE username_mail LIKE :searchKey OR name_surname LIKE :searchKey")
-    fun getMembershipsBySearchKey(searchKey: String): LiveData<List<Membership>>
+        @Query("UPDATE ${Constants.MEMBERSHIPTABLE} SET sizeClass = :size WHERE username_mail = :username")
+        fun updateMembership(username: String, size: Int)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllMemberships(memberships: List<Membership>)
+        @Query("DELETE FROM ${Constants.MEMBERSHIPTABLE} WHERE username_mail = :username")
+        fun deleteMembership(username: String)
+
+
 }

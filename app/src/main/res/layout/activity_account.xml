@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg2"
     tools:context=".AccountActivity">
 
     <LinearLayout
@@ -20,19 +21,24 @@
 
         <Button
             android:id="@+id/button13"
-            android:layout_width="20dp"
-            android:layout_height="match_parent"
+            android:layout_width="103dp"
+            android:layout_height="72dp"
             android:layout_weight="1"
+            android:background="@drawable/button_shape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:textColor="@color/white"
+            android:shadowRadius="5"
             android:text="Button" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="70dp"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="ManBox"
-            android:textAlignment="center"
-            android:textSize="34sp" />
+            app:srcCompat="@drawable/logo_withoutbackground" />
+
     </LinearLayout>
 
     <TextView
@@ -42,7 +48,7 @@
         android:layout_marginTop="128dp"
         android:layout_marginBottom="5dp"
         android:background="#00D0D2D6"
-        android:text="Hesabım"
+        android:text="MY ACCOUNT"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
@@ -68,79 +74,128 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="3dp"
-            android:text="Profile Information"
+            android:text="PROFILE INFORMATION"
             app:icon="@drawable/ic_launcher_foreground"
             app:iconGravity="textEnd"
-            app:iconSize="32dp" />
+            app:iconSize="32dp"
+            android:background="@drawable/button_shape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/button15"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="3dp"
-            android:text="Üyeliklerim"
+            android:text="SUBSCRIPTION"
             app:icon="@drawable/ic_launcher_foreground"
             app:iconGravity="textEnd"
-            app:iconSize="32dp" />
+            app:iconSize="32dp"
+            android:background="@drawable/button_shape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/button16"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="3dp"
-            android:text="Ölçümlerim"
+            android:text="MY MEASUREMENTS"
             app:icon="@drawable/ic_launcher_foreground"
             app:iconGravity="textEnd"
-            app:iconSize="32dp" />
+            app:iconSize="32dp"
+            android:background="@drawable/button_shape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/button17"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="3dp"
-            android:text="Hesabım"
+            android:text="ACCOUNT"
             app:icon="@drawable/ic_launcher_foreground"
             app:iconGravity="textEnd"
-            app:iconSize="32dp" />
+            app:iconSize="32dp"
+            android:background="@drawable/button_shape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/button18"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="3dp"
-            android:text="Bakiye"
+            android:text="BALANCE"
             app:icon="@drawable/ic_launcher_foreground"
             app:iconGravity="textEnd"
-            app:iconSize="32dp" />
+            app:iconSize="32dp"
+            android:background="@drawable/button_shape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/button19"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="3dp"
-            android:text="Rezervasyonlarım"
+            android:text="RESERVATIONS"
             app:icon="@drawable/ic_launcher_foreground"
             app:iconGravity="textEnd"
-            app:iconSize="32dp" />
+            app:iconSize="32dp"
+            android:background="@drawable/button_shape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/button20"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="3dp"
-            android:text="Şifremi Değiştir"
+            android:text="CHANGE PASSWORD"
             app:icon="@drawable/ic_launcher_foreground"
             app:iconGravity="textEnd"
-            app:iconSize="32dp" />
+            app:iconSize="32dp"
+            android:background="@drawable/button_shape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:textColor="@color/white"
+            />
 
         <Button
             android:id="@+id/button21"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="3dp"
-            android:text="Üyeliğimi Sil"
+            android:text="DELETE MY ACCOUNT"
             app:icon="@drawable/ic_launcher_foreground"
             app:iconGravity="textEnd"
-            app:iconSize="32dp" />
+            app:iconSize="32dp"
+            android:background="@drawable/button_shape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:textColor="@color/white"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

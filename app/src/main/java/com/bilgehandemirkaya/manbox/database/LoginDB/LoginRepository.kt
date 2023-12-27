@@ -1,6 +1,10 @@
 package com.bilgehandemirkaya.manbox.database.LoginDB
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class LoginRepository(private val loginDao: LoginDao) {
     val readAllData: LiveData<List<Login>> = loginDao.getAllLogins()
@@ -16,7 +20,6 @@ class LoginRepository(private val loginDao: LoginDao) {
     fun updateLogin(login: Login) {
         loginDao.updateLogin(login)
     }
-
 
     fun deleteLogin(login: Login) {
         loginDao.deleteLogin(login)
@@ -37,4 +40,16 @@ class LoginRepository(private val loginDao: LoginDao) {
     fun getLoginsByUserId(userId: Int): LiveData<List<Login>> {
         return loginDao.getLoginsByUserId(userId)
     }
+
+    fun getLastUser(): LiveData<Login?> {
+        return loginDao.getLastUser()
+    }
+
+    suspend fun changeEntranceStatus(username: String, entrance: Boolean): Boolean {
+        return withContext(Dispatchers.IO) {
+            val rowsUpdated = loginDao.changeEntranceStatus(username, entrance)
+            rowsUpdated > 0
+        }
+    }
+
 }

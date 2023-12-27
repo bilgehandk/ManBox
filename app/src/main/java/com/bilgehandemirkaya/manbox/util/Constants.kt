@@ -5,4 +5,5 @@ object Constants {
     const val LOGINTABLE="loginTable"
     const val MEMBERSHIPTABLE="membershipTable"
     const val DATABASENAME="manBoxDatabase"
+    const val SCHEDULE_TABLE="scheduleTable"
 }
