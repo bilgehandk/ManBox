@@ -49,6 +49,11 @@ class MenuScreen : AppCompatActivity() {
             startActivity(intent)
 
         }
+
+        binding.button9.setOnClickListener {
+            val intent = Intent(this, WeatherActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 
