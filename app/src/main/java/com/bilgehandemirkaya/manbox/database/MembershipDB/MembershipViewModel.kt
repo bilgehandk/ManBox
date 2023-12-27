@@ -23,17 +23,15 @@ class MembershipViewModel(application: Application) : AndroidViewModel(applicati
         repository.insert(membership)
     }
 
-
-
     fun deleteAll() = viewModelScope.launch {
         repository.deleteAll()
     }
 
-    fun getLatestMembershipNumber(id: Int) : Job = viewModelScope.launch {
-        repository.getLatestMembershipNumber(id)
+    fun getLatestMembershipNumber(id: Int) : Int? {
+        return repository.getLatestMembershipNumber(id)
     }
 
-    fun insertOrUpdateMembership(membership: Membership) = viewModelScope.launch {
+    fun insertOrUpdateMembership(membership: Membership) {
         repository.insertOrUpdateMembership(membership)
     }
 }

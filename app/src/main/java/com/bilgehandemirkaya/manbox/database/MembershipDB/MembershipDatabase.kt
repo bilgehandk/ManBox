@@ -4,8 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.bilgehandemirkaya.manbox.util.Constants
 
-@Database(entities = [Membership::class], version = 3, exportSchema = false)
+@Database(entities = [Membership::class], version = 2, exportSchema = false)
 abstract class MembershipDatabase : RoomDatabase() {
 
     abstract fun membershipDao(): MembershipDao
@@ -19,7 +20,7 @@ abstract class MembershipDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     MembershipDatabase::class.java,
-                    "membership_database"
+                    Constants.MEMBERSHIPTABLE
                 )
                 .fallbackToDestructiveMigration()
                 .build()

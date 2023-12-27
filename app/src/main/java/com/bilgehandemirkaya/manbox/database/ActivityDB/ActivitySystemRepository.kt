@@ -35,6 +35,9 @@ class ActivitySystemRepository(private val activitySystemDAO: ActivitySystemDAO)
         return activitySystemDAO.getActivityByDate(date)
     }
 
+    fun getActivityById(id: Int): ActivitySystem {
+        return activitySystemDAO.getActivityById(id)
+    }
 
 
 }

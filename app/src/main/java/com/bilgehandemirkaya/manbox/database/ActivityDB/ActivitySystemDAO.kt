@@ -35,4 +35,7 @@ interface ActivitySystemDAO {
     @Query("SELECT * FROM ${Constants.ACTIVITYTABLE} WHERE date = :date")
     fun getActivityByDate(date: String): LiveData<List<ActivitySystem>>
 
+    @Query("SELECT * FROM ${Constants.ACTIVITYTABLE} WHERE id_activity = :id")
+    fun getActivityById(id: Int): ActivitySystem
+
 }

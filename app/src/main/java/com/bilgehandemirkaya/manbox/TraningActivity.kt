@@ -9,6 +9,11 @@ import com.bilgehandemirkaya.manbox.database.ActivityDB.ActivitySystemViewModel
 import com.bilgehandemirkaya.manbox.database.LoginDB.LoginViewModel
 import com.bilgehandemirkaya.manbox.database.MembershipDB.MembershipViewModel
 import com.bilgehandemirkaya.manbox.databinding.ActivityTraningBinding
+import androidx.lifecycle.lifecycleScope
+import com.bilgehandemirkaya.manbox.database.MembershipDB.Membership
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class TraningActivity : AppCompatActivity(), DatePickerFragment.DatePickerListener {
 
@@ -28,7 +33,7 @@ class TraningActivity : AppCompatActivity(), DatePickerFragment.DatePickerListen
         membershipViewModel = ViewModelProvider(this).get(MembershipViewModel::class.java)
 
         // RecyclerViewAdapter'ı geç başlatma
-        adapter = RecyclerViewAdapter(this, null, membershipViewModel)
+        adapter = RecyclerViewAdapter(this)
         binding.recyclerCustomerView.adapter = adapter
         binding.recyclerCustomerView.layoutManager = LinearLayoutManager(this)
 
@@ -43,11 +48,47 @@ class TraningActivity : AppCompatActivity(), DatePickerFragment.DatePickerListen
             }
         })
 
+
+
         binding.dateEditBox.setOnClickListener {
             // Open DatePicker and handle the selected date
             showDatePicker()
         }
     }
+
+    fun addMembershipDB() {
+        val intent = intent
+        val id = intent.getIntExtra("id", 0)
+
+        // Use lifecycleScope.launch to perform the database operation in a coroutine
+        lifecycleScope.launch {
+            val userEx = loginViewModel.lastUser.value
+
+
+            // Use withContext(Dispatchers.IO) to switch to the background thread
+            val membershipSizeNumber = withContext(Dispatchers.IO) {
+                membershipViewModel.getLatestMembershipNumber(id)
+            }
+
+            val newMembershipSizeNumber = membershipSizeNumber?.plus(1) ?: 1
+
+
+
+            val membership = Membership(
+                id,
+                userEx?.username_mail ?: "",
+                userEx?.name_surname ?: "",
+                newMembershipSizeNumber
+            )
+
+            // Use withContext(Dispatchers.IO) to switch to the background thread
+            withContext(Dispatchers.IO) {
+                membershipViewModel.insertOrUpdateMembership(membership)
+            }
+        }
+    }
+
+
 
     private fun showDatePicker() {
         val datePickerFragment = DatePickerFragment()

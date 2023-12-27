@@ -21,7 +21,6 @@ class LoginRepository(private val loginDao: LoginDao) {
         loginDao.updateLogin(login)
     }
 
-
     fun deleteLogin(login: Login) {
         loginDao.deleteLogin(login)
     }
@@ -38,7 +37,6 @@ class LoginRepository(private val loginDao: LoginDao) {
         return loginDao.getLoginByUsernameAndPassword(username, password)
     }
 
-
     fun getLoginsByUserId(userId: Int): LiveData<List<Login>> {
         return loginDao.getLoginsByUserId(userId)
     }
@@ -46,7 +44,6 @@ class LoginRepository(private val loginDao: LoginDao) {
     fun getLastUser(): LiveData<Login?> {
         return loginDao.getLastUser()
     }
-
 
     suspend fun changeEntranceStatus(username: String, entrance: Boolean): Boolean {
         return withContext(Dispatchers.IO) {

@@ -16,25 +16,23 @@ interface MembershipDao {
         @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE}")
         fun getAllMemberships(): LiveData<List<Membership>>
 
-        @Insert(onConflict = OnConflictStrategy.IGNORE)
-        suspend fun insert(membership: Membership)
+        @Insert(onConflict = OnConflictStrategy.REPLACE)
+        fun insert(membership: Membership)
 
         @Query("DELETE FROM ${Constants.MEMBERSHIPTABLE}")
-        suspend fun deleteAll()
-
-
+        fun deleteAll()
 
         @Query("SELECT sizeClass FROM ${Constants.MEMBERSHIPTABLE} WHERE id_class = :id")
-        suspend fun getLatestMembershipNumber(id: Int): Int
+        fun getLatestMembershipNumber(id: Int): Int?
 
         @Query("SELECT * FROM ${Constants.MEMBERSHIPTABLE} WHERE username_mail = :username")
-        suspend fun getMembership(username: String): Membership
+        fun getMembership(username: String): Membership
 
         @Query("UPDATE ${Constants.MEMBERSHIPTABLE} SET sizeClass = :size WHERE username_mail = :username")
-        suspend fun updateMembership(username: String, size: Int)
+        fun updateMembership(username: String, size: Int)
 
         @Query("DELETE FROM ${Constants.MEMBERSHIPTABLE} WHERE username_mail = :username")
-        suspend fun deleteMembership(username: String)
+        fun deleteMembership(username: String)
 
 
 }

@@ -67,5 +67,10 @@ class ActivitySystemViewModel(application:Application):AndroidViewModel(applicat
 
     }
 
+    fun getActivityById(id: Int): ActivitySystem {
+        return repository.getActivityById(id)
+
+    }
+
 }
 

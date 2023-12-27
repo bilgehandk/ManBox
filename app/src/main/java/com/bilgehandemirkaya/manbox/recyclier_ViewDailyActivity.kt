@@ -7,14 +7,16 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.bilgehandemirkaya.manbox.database.ActivityDB.ActivitySystem
 import com.bilgehandemirkaya.manbox.database.LoginDB.Login
 import com.bilgehandemirkaya.manbox.database.MembershipDB.Membership
 import com.bilgehandemirkaya.manbox.database.MembershipDB.MembershipViewModel
+import kotlinx.coroutines.launch
 
-class RecyclerViewAdapter(private val activity: Activity, private val lastUser: Login?, private val membershipViewModel: MembershipViewModel) :
-    RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewItemHolder>() {
+class RecyclerViewAdapter(val activity: TraningActivity) : RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewItemHolder>() {
 
     private var recyclerItemValues = emptyList<ActivitySystem>()
 
@@ -38,21 +40,12 @@ class RecyclerViewAdapter(private val activity: Activity, private val lastUser: 
         holder.trainerNameTextView.text = item.trainerName
 
         holder.addMembershipBtn.setOnClickListener {
-            val membershipNumber = membershipViewModel.getLatestMembershipNumber(id).toString().toInt() + 1
+            // Ensure that the context is a LifecycleOwner
+            val intent = activity.intent
+            intent.putExtra("id", id)
+            //Call addMembershipDB() function
+            activity.addMembershipDB()
 
-            val membership = lastUser?.let { it1 ->
-                Membership(
-                    id,
-                    it1.username_mail,
-                    it1.name_surname,
-                    membershipNumber
-                )
-            }
-
-            if (membership != null) {
-                membershipViewModel.insertOrUpdateMembership(membership)
-            }
-            Toast.makeText(activity, "Membership is added", Toast.LENGTH_SHORT).show()
         }
     }
 
