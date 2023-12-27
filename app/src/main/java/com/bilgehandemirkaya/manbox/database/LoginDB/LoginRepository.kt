@@ -45,6 +45,13 @@ class LoginRepository(private val loginDao: LoginDao) {
         return loginDao.getLastUser()
     }
 
+    // LoginRepository.kt
+
+    suspend fun changePassword(username: String, newPassword: String) {
+        loginDao.changePassword(username, newPassword)
+    }
+
+
     suspend fun changeEntranceStatus(username: String, entrance: Boolean): Boolean {
         return withContext(Dispatchers.IO) {
             val rowsUpdated = loginDao.changeEntranceStatus(username, entrance)

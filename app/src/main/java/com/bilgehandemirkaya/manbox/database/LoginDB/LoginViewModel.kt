@@ -82,6 +82,19 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         // Which entrance true it is last user
         return repository.getLastUser()
     }
+    // LoginViewModel.kt
+
+    fun changePassword(username: String, newPassword: String) {
+        viewModelScope.launch {
+            try {
+                repository.changePassword(username, newPassword)
+            } catch (e: Exception) {
+
+            }
+        }
+    }
+
+
 
     fun performLogin() {
         val newLogin = Login(

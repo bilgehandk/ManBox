@@ -9,9 +9,12 @@ import android.os.Looper
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.bilgehandemirkaya.manbox.database.LoginDB.Login
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
+import com.bilgehandemirkaya.manbox.WorkManager.MyWorker
 import com.bilgehandemirkaya.manbox.databinding.ActivityMainBinding
 import com.bilgehandemirkaya.manbox.database.LoginDB.LoginViewModel
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -24,6 +27,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val workRequest = OneTimeWorkRequest.Builder(MyWorker::class.java)
+            .setInitialDelay(1, TimeUnit.HOURS)
+            .build()
+
+        WorkManager.getInstance(this).enqueue(workRequest)
 
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         loginViewModel.performLogin()
@@ -100,11 +109,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun stopMusic() {
-        mediaPlayer?.reset()
-        mediaPlayer?.prepare()
+        mediaPlayer?.release()
+        mediaPlayer = MediaPlayer.create(this, R.raw.sound1) // Recreate the MediaPlayer for future use
         isPlaying = false
         Toast.makeText(this@MainActivity, "Music stopped", Toast.LENGTH_SHORT).show()
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()
