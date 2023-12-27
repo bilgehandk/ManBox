@@ -35,6 +35,11 @@ interface LoginDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllLogins(logins: List<Login>)
 
+    // LoginDao.kt
+
+    @Query("UPDATE ${Constants.LOGINTABLE} SET password = :newPassword WHERE username_mail = :username")
+    suspend fun changePassword(username: String, newPassword: String)
+
     @Query("SELECT * FROM ${Constants.LOGINTABLE} WHERE username_mail = :username AND password = :password")
     fun getLoginByUsernameAndPassword(username: String, password: String): LiveData<Login?>
 
