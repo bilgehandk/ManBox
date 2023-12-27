@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="3dp"
-    tools:context=".TraningActivity">
+    tools:context=".TraningActivity"
+    android:background="@drawable/bg2">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -28,17 +29,21 @@
             android:layout_width="370dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="Button"
+            android:background="@drawable/button_shape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:textColor="@color/white"/>
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="409dp"
-            android:layout_height="59dp"
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text=" ManBox"
-            android:textAlignment="center"
-            android:textSize="32dp"
-            android:textStyle="bold" />
+            app:srcCompat="@drawable/logo_withoutbackground" />
+
     </LinearLayout>
 
     <TextView
@@ -46,8 +51,8 @@
         android:layout_width="405dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
-        android:background="#190AED"
-        android:text=" Antreman Programı"
+        android:background="#414141"
+        android:text=" TraInIng Program"
         android:textColor="#FFFFFF"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,10 +73,16 @@
 
         <Button
             android:id="@+id/button23"
-            android:layout_width="wrap_content"
+            android:layout_width="122dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Önceki" />
+            android:background="@drawable/button_shape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text="PrevIous Page"
+            android:textColor="@color/white" />
 
         <EditText
             android:id="@+id/dateEditBox"
@@ -84,14 +95,22 @@
             android:inputType="date"
             android:padding="5dp"
             android:focusable="false"
-            android:focusableInTouchMode="false"/>
+            android:focusableInTouchMode="false"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
 
         <Button
             android:id="@+id/button24"
-            android:layout_width="wrap_content"
+            android:layout_width="122dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Sonraki" />
+            android:background="@drawable/button_shape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text="NEXT"
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -104,6 +123,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register">
+    tools:context=".Register"
+    android:background="@drawable/bg2">
 
     <EditText
         android:id="@+id/mailEditText"
@@ -15,8 +16,11 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:ems="10"
+        android:gravity="center"
         android:hint="E-mail"
         android:inputType="text"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/editPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +40,10 @@
         app:layout_constraintBottom_toTopOf="@+id/editNameSurname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mailEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/mailEditText"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:gravity="center"/>
 
     <EditText
         android:id="@+id/editNameSurname"
@@ -52,7 +59,10 @@
         app:layout_constraintBottom_toTopOf="@+id/editHeight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/editPassword"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:gravity="center"/>
 
     <EditText
         android:id="@+id/EditBirthDate"
@@ -68,22 +78,22 @@
         app:layout_constraintBottom_toTopOf="@+id/editWeight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editHeight" />
+        app:layout_constraintTop_toBottomOf="@+id/editHeight"
+        android:textColorHint="@color/white"
+        android:gravity="center"/>
 
     <EditText
         android:id="@+id/editWeight"
         android:layout_width="365dp"
         android:layout_height="65dp"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="228dp"
         android:ems="10"
+        android:gravity="center"
         android:hint="Weight"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EditBirthDate" />
 
@@ -101,7 +111,10 @@
         app:layout_constraintBottom_toTopOf="@+id/EditBirthDate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNameSurname" />
+        app:layout_constraintTop_toBottomOf="@+id/editNameSurname"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:gravity="center"/>
 
     <Button
         android:id="@+id/RegisterBtn"
@@ -111,11 +124,17 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="45dp"
         android:layout_marginBottom="80dp"
-        android:text="Register"
+        android:text="RegIster"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editWeight" />
+        app:layout_constraintTop_toBottomOf="@+id/editWeight"
+        android:textColor="@color/white"
+        android:background="@drawable/button_shape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

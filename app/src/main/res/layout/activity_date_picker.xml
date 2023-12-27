@@ -3,10 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/linear_layout"
-    android:gravity = "center">
+    android:gravity = "center"
+    android:background="@drawable/bg3">
 
     <DatePicker
         android:id="@+id/datePicker"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:calendarTextColor="@android:color/white"
+        android:outlineAmbientShadowColor="@android:color/white" />
+
 </LinearLayout>
