@@ -5,17 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".WeatherActivity">
 
-    <EditText
-        android:id="@+id/cityTv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter City Name" />
+
 
     <Button
         android:id="@+id/buttonGetWeather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cityTv"
         android:layout_marginTop="16dp"
         android:onClick="getweather"
         android:text="Get Weather" />

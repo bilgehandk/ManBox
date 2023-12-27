@@ -20,27 +20,25 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class WeatherActivity : AppCompatActivity() {
 
-    var et: EditText? = null
     var tv: TextView? = null
-    var url = "api.openweathermap.org/data/2.5/weather?q={city name}&appid={your api key}"
+
     var apikey = "190474e6d8fdd997583efab23ca3c5e7"
-    var manager: LocationManager? = null
-    var locationListener: LocationListener? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather)
-        et = findViewById<EditText>(R.id.cityTv)
+
         tv = findViewById<TextView>(R.id.tempTv)
     }
 
     fun getweather(v: View) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.openweathermap.org/data/2.5/")
+            .baseUrl("https://api.openweathermap.org")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val myapi = retrofit.create(weatherapi::class.java)
-        val examplecall = myapi.getweather(et!!.text.toString().trim(' '), apikey)
+        val examplecall = myapi.getweather()
         examplecall!!.enqueue(object : Callback<WeatherModel> {
             override fun onResponse(call: Call<WeatherModel>, response: Response<WeatherModel>) {
                 if (response.code() == 404) {
