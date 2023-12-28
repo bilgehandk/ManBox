@@ -1,5 +1,6 @@
 package com.bilgehandemirkaya.manbox
 
+import android.content.Intent
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
@@ -10,6 +11,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bilgehandemirkaya.manbox.databinding.ActivityTraningBinding
+import com.bilgehandemirkaya.manbox.databinding.ActivityWeatherBinding
 import com.bilgehandemirkaya.manbox.model.WeatherModel
 import com.bilgehandemirkaya.manbox.weatherApi.weatherapi
 import retrofit2.Call
@@ -19,6 +22,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class WeatherActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityWeatherBinding
 
     var tv: TextView? = null
 
@@ -28,8 +32,15 @@ class WeatherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather)
+        binding = ActivityWeatherBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         tv = findViewById<TextView>(R.id.tempTv)
+
+        binding.button49.setOnClickListener {
+            val intent = Intent(this, MenuScreen::class.java)
+            startActivity(intent)
+        }
     }
 
     fun getweather(v: View) {

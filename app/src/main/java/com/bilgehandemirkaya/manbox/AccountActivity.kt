@@ -1,5 +1,6 @@
 package com.bilgehandemirkaya.manbox
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -27,7 +28,15 @@ class AccountActivity : AppCompatActivity() {
 
         binding.button20.setOnClickListener{
             showUserInfoDialog()
+
         }
+
+        binding.button2.setOnClickListener{
+            val intent = Intent(this,MenuScreen::class.java)
+            startActivity(intent)
+
+        }
+
     }
 
 

@@ -1,5 +1,6 @@
 package com.bilgehandemirkaya.manbox
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
@@ -9,6 +10,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.bilgehandemirkaya.manbox.databinding.ActivityAccountBinding
+import com.bilgehandemirkaya.manbox.databinding.ActivitySalonGirisBinding
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.google.zxing.qrcode.QRCodeWriter
@@ -17,6 +20,8 @@ class SalonGiris : AppCompatActivity() {
     private lateinit var imgqr: ImageView
     private lateinit var btnqr: Button
     private lateinit var countdownText: TextView
+    private lateinit var binding: ActivitySalonGirisBinding
+
 
     private var currentBitmap: Bitmap? = null
     private var remainingTime: Int = 15 // Set countdown to 15 seconds
@@ -35,13 +40,24 @@ class SalonGiris : AppCompatActivity() {
         }
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_salon_giris)
 
         imgqr = findViewById(R.id.ImageQR)
         btnqr = findViewById(R.id.qrbutton)
         countdownText = findViewById(R.id.countdownText)
+
+        binding = ActivitySalonGirisBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.button44.setOnClickListener{
+            val intent = Intent(this, MenuScreen::class.java)
+            startActivity(intent)
+        }
+
 
         btnqr.setOnClickListener {
             val data = generateRandomString()
