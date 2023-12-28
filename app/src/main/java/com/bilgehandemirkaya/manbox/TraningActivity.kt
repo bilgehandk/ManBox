@@ -21,7 +21,7 @@ class TraningActivity : AppCompatActivity(), DatePickerFragment.DatePickerListen
     private lateinit var activitySystemViewModel: ActivitySystemViewModel
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var membershipViewModel: MembershipViewModel
-    private lateinit var adapter: RecyclerViewAdapter
+    private lateinit var adapter: recyclier_ViewDailyActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,7 @@ class TraningActivity : AppCompatActivity(), DatePickerFragment.DatePickerListen
         membershipViewModel = ViewModelProvider(this).get(MembershipViewModel::class.java)
 
         // RecyclerViewAdapter'ı geç başlatma
-        adapter = RecyclerViewAdapter(this)
+        adapter = recyclier_ViewDailyActivity(this)
         binding.recyclerCustomerView.adapter = adapter
         binding.recyclerCustomerView.layoutManager = LinearLayoutManager(this)
 

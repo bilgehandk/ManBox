@@ -16,7 +16,7 @@ import com.bilgehandemirkaya.manbox.database.MembershipDB.Membership
 import com.bilgehandemirkaya.manbox.database.MembershipDB.MembershipViewModel
 import kotlinx.coroutines.launch
 
-class RecyclerViewAdapter(val activity: TraningActivity) : RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewItemHolder>() {
+class recyclier_ViewDailyActivity(val activity: TraningActivity) : RecyclerView.Adapter<recyclier_ViewDailyActivity.RecyclerViewItemHolder>() {
 
     private var recyclerItemValues = emptyList<ActivitySystem>()
 
