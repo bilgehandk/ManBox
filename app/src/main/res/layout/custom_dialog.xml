@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/bg2">
 
     <TextView
         android:id="@+id/nameSurnameTextView"
@@ -13,7 +14,10 @@
         android:layout_height="wrap_content"
         android:text="Name: "
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textAlignment="center"/>
 
     <TextView
         android:id="@+id/heightTextView"
@@ -21,7 +25,10 @@
         android:layout_height="wrap_content"
         android:text="Height: "
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textAlignment="center"/>
 
     <TextView
         android:id="@+id/weightTextView"
@@ -29,7 +36,10 @@
         android:layout_height="wrap_content"
         android:text="Weight: "
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textAlignment="center"/>
 
     <TextView
         android:id="@+id/ageTextView"
@@ -37,6 +47,9 @@
         android:layout_height="wrap_content"
         android:text="Age: "
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textAlignment="center"/>
 
 </LinearLayout>
