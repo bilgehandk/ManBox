@@ -67,30 +67,10 @@
 
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="145dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="14dp"
-        android:background="@drawable/button_shape"
-        android:shadowColor="#A8A8A8"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="5"
-        android:text="Forgot Password"
-        android:textColor="#FFFFFF"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
-
-    <Button
         android:id="@+id/button3"
         android:layout_width="145dp"
         android:layout_height="40dp"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="14dp"
         android:background="@drawable/button_shape"
         android:shadowColor="#A8A8A8"
@@ -103,8 +83,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.038" />
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.264" />
 
     <ImageView
         android:id="@+id/imageView2"

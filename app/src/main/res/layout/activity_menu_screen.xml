@@ -19,7 +19,7 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
-        android:text="Personal TraInIng Program"
+        android:text="Temperature"
         android:textColor="@color/white"
         app:icon="@drawable/ic_launcher_foreground"
         app:iconSize="32dp"
