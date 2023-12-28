@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:calendarTextColor="@android:color/white"
-        android:outlineAmbientShadowColor="@android:color/white" />
+        android:outlineAmbientShadowColor="@android:color/white"
+        android:background="@drawable/bg3"/>
 
 </LinearLayout>
