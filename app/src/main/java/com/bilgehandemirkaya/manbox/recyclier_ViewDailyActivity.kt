@@ -42,9 +42,12 @@ class recyclier_ViewDailyActivity(val activity: TraningActivity) : RecyclerView.
         holder.addMembershipBtn.setOnClickListener {
             // Ensure that the context is a LifecycleOwner
             val intent = activity.intent
+            val context = holder.itemView.context
             intent.putExtra("id", id)
             //Call addMembershipDB() function
             activity.addMembershipDB()
+            // Show a Toast message
+            Toast.makeText(context, "Reservation is done", Toast.LENGTH_SHORT).show()
 
         }
     }

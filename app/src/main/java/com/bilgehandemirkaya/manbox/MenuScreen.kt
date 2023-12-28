@@ -54,6 +54,9 @@ class MenuScreen : AppCompatActivity() {
             val intent = Intent(this, WeatherActivity::class.java)
             startActivity(intent)
         }
+
+
+
     }
 
 

@@ -39,6 +39,7 @@ class TraningActivity : AppCompatActivity(), DatePickerFragment.DatePickerListen
 
         activitySystemViewModel.performActivity()
 
+
         loginViewModel.lastUser.observe(this, Observer { lastUser ->
             if (lastUser != null) {
 

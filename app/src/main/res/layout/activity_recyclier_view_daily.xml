@@ -15,7 +15,8 @@
         android:layout_weight="1"
         android:text="Class: 12:00"
         android:textAlignment="center"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:id="@+id/numberClassActivityText"
@@ -24,7 +25,8 @@
         android:layout_weight="1"
         android:text="0/5"
         android:textAlignment="center"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:id="@+id/TrainerNameTextView"
@@ -33,7 +35,8 @@
         android:layout_weight="1"
         android:text="Bilgehan Demirkaya"
         android:textAlignment="center"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@android:color/white"/>
 
     <Button
         android:id="@+id/addMembershipBtn"
@@ -42,5 +45,6 @@
         android:layout_weight="1"
         android:text="Reservation"
         android:textAlignment="center"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@android:color/white"/>
 </LinearLayout>
