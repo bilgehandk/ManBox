@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             .setInitialDelay(1, TimeUnit.HOURS)
             .build()
 
+
         WorkManager.getInstance(this).enqueue(workRequest)
 
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
@@ -49,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                                 if (success) {
                                     // Open the MenuScreen activity
                                     val intent = Intent(this@MainActivity, MenuScreen::class.java)
-                                    intent.putExtra("userName", loggedInUser?.username_mail)
+                                    intent.putExtra("name", mailText)
                                     startActivity(intent)
                                 } else {
                                     // Handle unsuccessful entrance status change

@@ -25,7 +25,9 @@ class MenuScreen : AppCompatActivity() {
 
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
-        val nameSurname = intent.getStringExtra("userName")
+        val intent = Intent(this, MainActivity::class.java)
+        val nameSurname = intent.getStringExtra("name")
+
         binding.textView3.text = "Hello $nameSurname"
 
 
